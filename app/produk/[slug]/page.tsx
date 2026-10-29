@@ -6,6 +6,8 @@ import { ProductDetailView } from "@/components/product/ProductDetailView";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { getProducts, getProductBySlug, getRelatedProducts } from "@/lib/products";
 
+export const instant = false;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }

@@ -7,6 +7,8 @@ import { ProductGrid } from "@/components/product/ProductGrid";
 import { getCategories, getCategoryBySlug, getProducts } from "@/lib/products";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 
+export const instant = false;
+
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
 }
