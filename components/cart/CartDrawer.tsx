@@ -102,7 +102,7 @@ export function CartDrawer() {
               </div>
 
               {/* Note about delivery calculation */}
-              <div className="flex items-start gap-1.5 p-2.5 rounded-lg bg-frost-50 border border-frost-500/20 text-xs text-neutral-600 mb-4">
+              <div className="flex items-start gap-1.5 p-2.5 rounded-lg bg-frost-50 text-xs text-neutral-600 mb-4">
                 <Info className="w-4 h-4 text-frost-500 shrink-0 mt-0.5" />
                 <span>
                   Harga di atas belum termasuk ongkir. Total final dan ketersediaan stok akan dikonfirmasi langsung oleh admin di WhatsApp.

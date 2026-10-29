@@ -9,7 +9,7 @@ export default function NotFound() {
       <Container>
         <div className="max-w-md mx-auto text-center space-y-6">
           {/* Fun 404 Ice Illustration */}
-          <div className="relative w-24 h-24 mx-auto rounded-3xl bg-frost-50 border border-frost-500/30 flex items-center justify-center text-primary-500 shadow-sm">
+          <div className="relative w-24 h-24 mx-auto rounded-3xl bg-frost-50 flex items-center justify-center text-primary-500 shadow-sm">
             <Snowflake className="w-12 h-12 text-frost-500 animate-spin" style={{ animationDuration: "12s" }} />
             <span className="absolute -bottom-2 px-2.5 py-0.5 rounded-full bg-primary-600 text-white font-extrabold text-xs shadow-xs">
               404

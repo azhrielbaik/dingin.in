@@ -50,7 +50,7 @@ export function FinalCTA() {
               className="w-full sm:w-auto bg-transparent text-white border-white/70 hover:bg-white/10"
             >
               <span>Jelajahi Semua Produk</span>
-              <ArrowRight className="w-5 h-5 ml-1" />
+              <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
           </div>
 

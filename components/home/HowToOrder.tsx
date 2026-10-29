@@ -56,7 +56,7 @@ export function HowToOrder() {
           {steps.map((item) => (
             <div
               key={item.step}
-              className="relative z-10 flex flex-col items-center text-center p-4 rounded-2xl bg-white"
+              className="relative z-10 flex flex-col items-center text-center p-4 rounded-2xl bg-white shadow-sm hover:shadow transition-shadow"
             >
               {/* Numbered badge circle */}
               <div className="w-14 h-14 rounded-full bg-primary-500 text-white flex items-center justify-center font-extrabold text-lg shadow-md ring-4 ring-white mb-4">

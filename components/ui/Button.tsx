@@ -46,9 +46,9 @@ export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
     };
 
     const sizeStyles = {
-      sm: "h-9 px-3 text-xs sm:text-sm rounded-md gap-1.5",
-      md: "h-11 px-4 text-sm sm:text-base rounded-md gap-2",
-      lg: "h-13 px-6 text-base sm:text-lg rounded-lg gap-2.5",
+      sm: "h-8.5 px-3 text-xs rounded-lg gap-1.5",
+      md: "h-10 px-4 text-xs sm:text-sm rounded-xl gap-2",
+      lg: "h-11 px-5 sm:px-6 text-sm sm:text-base rounded-xl gap-2",
     };
 
     const combinedClasses = cn(

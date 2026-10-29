@@ -107,11 +107,11 @@ export default function CaraPesanPage() {
           {steps.map((step) => (
             <div
               key={step.num}
-              className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200 relative flex flex-col justify-between hover:shadow-md transition-shadow"
+              className="p-6 rounded-2xl bg-white shadow-sm relative flex flex-col justify-between hover:shadow-md transition-shadow"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-neutral-200 flex items-center justify-center shadow-2xs">
+                  <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center">
                     {step.icon}
                   </div>
                   <span className="text-2xl font-black text-primary-200">
@@ -130,7 +130,7 @@ export default function CaraPesanPage() {
         </div>
 
         {/* Payment Methods Section */}
-        <div className="bg-neutral-50 rounded-3xl p-6 sm:p-10 border border-neutral-200 mb-14">
+        <div className="bg-neutral-50 rounded-3xl p-6 sm:p-10 mb-14">
           <div className="max-w-xl mb-6">
             <h2 className="text-xl sm:text-2xl font-bold text-neutral-900">
               Metode Pembayaran yang Diterima
@@ -144,7 +144,7 @@ export default function CaraPesanPage() {
             {paymentMethods.map((m, i) => (
               <div
                 key={i}
-                className="p-5 rounded-2xl bg-white border border-neutral-200 shadow-2xs flex items-start gap-4"
+                className="p-5 rounded-2xl bg-white shadow-sm flex items-start gap-4"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center shrink-0">
                   {m.icon}
@@ -159,7 +159,7 @@ export default function CaraPesanPage() {
             ))}
           </div>
 
-          <div className="p-4 rounded-xl bg-white border border-neutral-200 text-xs text-neutral-600 flex items-start gap-3">
+          <div className="p-4 rounded-xl bg-white shadow-sm text-xs text-neutral-600 flex items-start gap-3">
             <Clock className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
             <div>
               <span className="font-bold text-neutral-900 block mb-0.5">
@@ -172,7 +172,7 @@ export default function CaraPesanPage() {
 
         {/* Guarantee and Packaging */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
-          <div className="p-6 rounded-2xl bg-frost-50 border border-frost-500/25 space-y-3">
+          <div className="p-6 rounded-2xl bg-frost-50 shadow-sm space-y-3">
             <div className="flex items-center gap-2 text-primary-700 font-bold text-sm">
               <Truck className="w-5 h-5 text-frost-500" />
               SOP Pengemasan Rantai Dingin
@@ -182,7 +182,7 @@ export default function CaraPesanPage() {
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-success/5 border border-success/20 space-y-3">
+          <div className="p-6 rounded-2xl bg-success/5 shadow-sm space-y-3">
             <div className="flex items-center gap-2 text-success font-bold text-sm">
               <ShieldCheck className="w-5 h-5" />
               Garansi Segar Tiba

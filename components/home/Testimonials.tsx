@@ -25,7 +25,7 @@ export function Testimonials() {
           {testimonials.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col justify-between p-6 rounded-2xl bg-neutral-50 border border-neutral-200/80 hover:shadow-md transition-shadow relative"
+              className="flex flex-col justify-between p-6 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow relative"
             >
               <div>
                 {/* 5 Stars Rating */}

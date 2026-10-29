@@ -21,7 +21,7 @@ export function CartItemRow({ item }: CartItemRowProps) {
       <Link
         href={`/produk/${item.productSlug}`}
         onClick={closeDrawer}
-        className="relative w-16 h-16 rounded-lg overflow-hidden bg-neutral-100 shrink-0 border border-neutral-200"
+        className="relative w-16 h-16 rounded-lg overflow-hidden bg-neutral-100 shrink-0 shadow-2xs"
       >
         <Image
           src={item.image}

@@ -59,7 +59,7 @@ export default function FAQPage() {
         </div>
 
         {/* Bottom Card: Belum menemukan jawaban? (Design 7.7) */}
-        <div className="bg-white rounded-3xl border border-neutral-200 p-8 sm:p-10 text-center max-w-2xl mx-auto shadow-sm">
+        <div className="bg-white rounded-3xl p-8 sm:p-10 text-center max-w-2xl mx-auto shadow-sm">
           <div className="w-14 h-14 rounded-2xl bg-wa-500/10 flex items-center justify-center mx-auto mb-4 text-wa-700">
             <MessageCircle className="w-7 h-7" />
           </div>

@@ -21,7 +21,7 @@ export function ContactCard() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-primary-50 to-white rounded-3xl p-6 sm:p-8 border border-primary-100 shadow-sm space-y-6">
+    <div className="bg-gradient-to-br from-primary-50 to-white rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
       <div className="flex items-center gap-3">
         <div className="w-12 h-12 rounded-2xl bg-wa-700 text-white flex items-center justify-center shadow-sm">
           <WhatsAppIcon className="w-6 h-6 text-white" />
@@ -36,7 +36,7 @@ export function ContactCard() {
         </div>
       </div>
 
-      <div className="p-4 rounded-2xl bg-white border border-neutral-200/80 space-y-3">
+      <div className="p-4 rounded-2xl bg-white shadow-xs space-y-3">
         <div className="flex items-center justify-between">
           <div>
             <span className="text-xs text-neutral-400 block font-medium">Nomor WhatsApp:</span>
@@ -74,7 +74,7 @@ export function ContactCard() {
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleChat}
-        className="w-full h-12 rounded-xl bg-wa-700 hover:bg-wa-800 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-sm transition-all"
+        className="w-full h-11 rounded-xl bg-wa-700 hover:bg-wa-800 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-sm transition-all"
       >
         <WhatsAppIcon className="w-5 h-5" />
         <span>Buka Chat WhatsApp Sekarang</span>

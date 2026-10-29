@@ -6,9 +6,9 @@ export function ColdChainInfo() {
   return (
     <section className="py-14 sm:py-16 bg-neutral-50">
       <Container>
-        <div className="bg-gradient-to-br from-frost-50 to-white rounded-3xl border border-frost-500/25 p-6 sm:p-10 lg:p-12 shadow-sm">
+        <div className="bg-gradient-to-br from-frost-50 to-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm">
           <div className="max-w-2xl mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-frost-500/15 text-primary-700 text-xs font-bold mb-3 border border-frost-500/20">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-frost-500/15 text-primary-700 text-xs font-bold mb-3">
               <Snowflake className="w-3.5 h-3.5 text-frost-500" />
               Standar Rantai Dingin dingin.in
             </div>
@@ -22,7 +22,7 @@ export function ColdChainInfo() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Point 1 */}
-            <div className="bg-white rounded-2xl p-5 border border-frost-500/20 shadow-2xs space-y-2.5">
+            <div className="bg-white rounded-2xl p-5 shadow-sm space-y-2.5">
               <div className="w-10 h-10 rounded-xl bg-frost-50 flex items-center justify-center text-frost-500">
                 <PackageCheck className="w-5 h-5" />
               </div>
@@ -35,7 +35,7 @@ export function ColdChainInfo() {
             </div>
 
             {/* Point 2 */}
-            <div className="bg-white rounded-2xl p-5 border border-frost-500/20 shadow-2xs space-y-2.5">
+            <div className="bg-white rounded-2xl p-5 shadow-sm space-y-2.5">
               <div className="w-10 h-10 rounded-xl bg-frost-50 flex items-center justify-center text-frost-500">
                 <Clock4 className="w-5 h-5" />
               </div>
@@ -48,7 +48,7 @@ export function ColdChainInfo() {
             </div>
 
             {/* Point 3 */}
-            <div className="bg-white rounded-2xl p-5 border border-frost-500/20 shadow-2xs space-y-2.5">
+            <div className="bg-white rounded-2xl p-5 shadow-sm space-y-2.5">
               <div className="w-10 h-10 rounded-xl bg-frost-50 flex items-center justify-center text-frost-500">
                 <ShieldAlert className="w-5 h-5" />
               </div>

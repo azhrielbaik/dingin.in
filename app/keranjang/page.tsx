@@ -69,7 +69,7 @@ export default function KeranjangPage() {
 
         {items.length === 0 ? (
           /* Empty State */
-          <div className="bg-white rounded-3xl border border-neutral-200 p-8 sm:p-14 text-center max-w-lg mx-auto shadow-sm">
+          <div className="bg-white rounded-3xl p-8 sm:p-14 text-center max-w-lg mx-auto shadow-sm">
             <div className="w-20 h-20 rounded-full bg-primary-50 flex items-center justify-center mx-auto mb-4 text-primary-500">
               <ShoppingBag className="w-10 h-10" />
             </div>
@@ -86,7 +86,7 @@ export default function KeranjangPage() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Column: Items list */}
-            <div className="lg:col-span-7 bg-white rounded-2xl border border-neutral-200 p-5 sm:p-6 shadow-sm">
+            <div className="lg:col-span-7 bg-white rounded-2xl p-5 sm:p-6 shadow-sm">
               <div className="flex items-center justify-between pb-4 border-b border-neutral-100 mb-2">
                 <span className="font-bold text-sm text-neutral-900">Daftar Produk</span>
                 <span className="text-xs text-neutral-500">{totalItems} kemasan</span>
@@ -110,7 +110,7 @@ export default function KeranjangPage() {
             </div>
 
             {/* Right Column: Order Summary & WhatsApp CTA */}
-            <div className="lg:col-span-5 bg-white rounded-2xl border border-neutral-200 p-6 shadow-sm space-y-5">
+            <div className="lg:col-span-5 bg-white rounded-2xl p-6 shadow-sm space-y-5">
               <h2 className="font-bold text-base text-neutral-900 pb-3 border-b border-neutral-100">
                 Ringkasan Estimasi Pesanan
               </h2>
@@ -144,7 +144,7 @@ export default function KeranjangPage() {
               </div>
 
               {/* Info Note (Design 8.10) */}
-              <div className="p-3.5 rounded-xl bg-frost-50 border border-frost-500/20 text-xs text-neutral-600 flex items-start gap-2.5">
+              <div className="p-3.5 rounded-xl bg-frost-50 text-xs text-neutral-600 flex items-start gap-2.5">
                 <Info className="w-4 h-4 text-frost-500 shrink-0 mt-0.5" />
                 <p className="leading-relaxed">
                   Semua pesanan dikirim dari Rawa Belong, Jakarta Barat. Estimasi ongkir, ketersediaan stok, dan metode pembayaran akan dirincikan oleh admin langsung di chat WhatsApp.

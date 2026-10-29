@@ -165,8 +165,8 @@ export function ProductGrid({
         </div>
       ) : (
         /* Empty State (PRD K-08, Design 7.3) */
-        <div className="bg-neutral-50 rounded-2xl border border-neutral-200 p-8 sm:p-12 text-center max-w-lg mx-auto">
-          <div className="w-16 h-16 rounded-full bg-white border border-neutral-200 flex items-center justify-center mx-auto mb-4 text-neutral-400">
+        <div className="bg-white rounded-2xl shadow-sm p-8 sm:p-12 text-center max-w-lg mx-auto">
+          <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mx-auto mb-4 text-neutral-400">
             <Search className="w-8 h-8" />
           </div>
           <h3 className="text-lg font-bold text-neutral-900 mb-1">

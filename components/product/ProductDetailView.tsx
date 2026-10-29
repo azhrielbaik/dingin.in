@@ -109,7 +109,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
             </h1>
 
             {/* Price section */}
-            <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200/80 mb-6">
+            <div className="p-4 rounded-2xl bg-neutral-50 shadow-xs mb-6">
               <div className="flex items-baseline gap-2.5">
                 <span className="text-2xl sm:text-3xl font-extrabold text-neutral-900">
                   {formatRupiah(unitPrice)}
@@ -182,16 +182,16 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                 <button
                   type="button"
                   onClick={handleAddToCart}
-                  className="w-full sm:w-auto h-13 px-5 rounded-lg border-2 border-primary-500 text-primary-600 hover:bg-primary-50 font-bold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer select-none"
+                  className="w-full sm:w-auto h-11 px-4 sm:px-5 rounded-xl border border-primary-500 text-primary-600 hover:bg-primary-50 font-bold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer select-none"
                 >
-                  <ShoppingBag className="w-5 h-5" />
+                  <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>Tambah Keranjang</span>
                 </button>
               )}
             </div>
 
             {/* Price Note (PRD D-08, Design 8.10) */}
-            <div className="flex items-start gap-2 p-3 rounded-xl bg-frost-50 border border-frost-500/20 text-xs text-neutral-600">
+            <div className="flex items-start gap-2 p-3 rounded-xl bg-frost-50 text-xs text-neutral-600 shadow-2xs">
               <Info className="w-4 h-4 text-frost-500 shrink-0 mt-0.5" />
               <span>
                 Harga belum termasuk ongkir. Total akhir dan ketersediaan stok akan dikonfirmasi langsung oleh admin di WhatsApp.

@@ -27,9 +27,9 @@ export function ProductInfoTabs({ product }: ProductInfoTabsProps) {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-2xs">
+    <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
       {/* Tab navigation headers */}
-      <div className="flex border-b border-neutral-200 bg-neutral-50 overflow-x-auto">
+      <div className="flex border-b border-neutral-100 bg-neutral-50/70 overflow-x-auto">
         <button
           onClick={() => setActiveTab("detail")}
           className={cn(
@@ -125,7 +125,7 @@ export function ProductInfoTabs({ product }: ProductInfoTabsProps) {
         {/* Panel 2: Cara Penyimpanan */}
         {activeTab === "simpan" && (
           <div className="space-y-4">
-            <div className="p-4 rounded-xl bg-frost-50 border border-frost-500/20 flex items-start gap-3">
+            <div className="p-4 rounded-xl bg-frost-50 flex items-start gap-3 shadow-2xs">
               <Snowflake className="w-6 h-6 text-frost-500 shrink-0 mt-0.5" />
               <div className="space-y-1.5 text-sm">
                 <h4 className="font-bold text-neutral-900">
@@ -141,13 +141,13 @@ export function ProductInfoTabs({ product }: ProductInfoTabsProps) {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-neutral-600">
-              <div className="p-3 rounded-lg bg-neutral-50 border border-neutral-200">
+              <div className="p-3 rounded-lg bg-neutral-50 shadow-2xs">
                 <span className="font-bold text-neutral-900 block mb-1">
                   Suhu Freezer (−18 °C s/d −20 °C)
                 </span>
                 Tahan optimal hingga tanggal kadaluarsa yang tertera di kemasan (4–8 bulan).
               </div>
-              <div className="p-3 rounded-lg bg-neutral-50 border border-neutral-200">
+              <div className="p-3 rounded-lg bg-neutral-50 shadow-2xs">
                 <span className="font-bold text-neutral-900 block mb-1">
                   Suhu Kulkas Bawah / Chiller (2 °C s/d 5 °C)
                 </span>
@@ -167,9 +167,9 @@ export function ProductInfoTabs({ product }: ProductInfoTabsProps) {
               {product.cooking.map((guide, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-3 p-3.5 rounded-xl border border-neutral-200 bg-neutral-50/70"
+                  className="flex items-start gap-3 p-3.5 rounded-xl bg-neutral-50/70 shadow-2xs"
                 >
-                  <div className="p-2 rounded-lg bg-white border border-neutral-200 shrink-0 shadow-2xs">
+                  <div className="p-2 rounded-lg bg-white shrink-0 shadow-2xs">
                     {cookingMethodIcons[guide.method] || <Flame className="w-5 h-5 text-primary-500" />}
                   </div>
                   <div className="space-y-1">

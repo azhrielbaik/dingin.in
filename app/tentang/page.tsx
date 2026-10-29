@@ -80,7 +80,7 @@ export default function TentangPage() {
 
         {/* Story Section with Image */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
-          <div className="lg:col-span-6 relative aspect-4/3 rounded-3xl overflow-hidden shadow-lg border border-neutral-200 bg-neutral-100">
+          <div className="lg:col-span-6 relative aspect-4/3 rounded-3xl overflow-hidden shadow-md bg-neutral-100">
             <Image
               src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1000&auto=format&fit=crop"
               alt="Dapur produksi higienis dingin.in"
@@ -103,7 +103,7 @@ export default function TentangPage() {
         </div>
 
         {/* 3 Values (Design 7.8) */}
-        <div className="bg-neutral-50 rounded-3xl p-8 sm:p-12 border border-neutral-200 mb-16">
+        <div className="bg-neutral-50 rounded-3xl p-8 sm:p-12 mb-16">
           <div className="text-center max-w-xl mx-auto mb-10">
             <h2 className="text-2xl font-bold text-neutral-900">
               Nilai-Nilai Kualitas Kami
@@ -117,7 +117,7 @@ export default function TentangPage() {
             {values.map((v, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl p-6 border border-neutral-200/80 shadow-2xs space-y-3"
+                className="bg-white rounded-2xl p-6 shadow-sm space-y-3"
               >
                 <div className="w-12 h-12 rounded-xl bg-neutral-50 flex items-center justify-center">
                   {v.icon}

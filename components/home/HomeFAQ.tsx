@@ -30,7 +30,7 @@ export function HomeFAQ() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-neutral-200 shadow-2xs mb-6">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm mb-6">
             <Accordion items={homeFaqList} defaultOpenId="home-faq-0" />
           </div>
 

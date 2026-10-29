@@ -58,9 +58,9 @@ export default function ProdukPage() {
         <ProductGrid initialProducts={products} categories={categories} />
 
         {/* Bottom Helper Banner */}
-        <div className="mt-14 p-5 sm:p-6 rounded-2xl bg-frost-50 border border-frost-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-14 p-5 sm:p-6 rounded-2xl bg-frost-50 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white text-primary-500 flex items-center justify-center shrink-0 border border-neutral-200">
+            <div className="w-10 h-10 rounded-xl bg-white text-primary-500 flex items-center justify-center shrink-0 shadow-xs">
               <MessageSquareQuote className="w-5 h-5" />
             </div>
             <div>

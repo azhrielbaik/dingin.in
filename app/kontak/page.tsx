@@ -66,7 +66,7 @@ export default function KontakPage() {
           {/* Right Column: Operational Hours, Address, and Service Areas */}
           <div className="lg:col-span-6 space-y-6">
             {/* Hours Card */}
-            <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200/80 space-y-3">
+            <div className="p-6 rounded-2xl bg-white shadow-sm space-y-3">
               <div className="flex items-center gap-2 text-neutral-900 font-bold text-base">
                 <Clock className="w-5 h-5 text-primary-500" />
                 Jam Operasional Chat & Pengiriman
@@ -80,7 +80,7 @@ export default function KontakPage() {
             </div>
 
             {/* Address Card */}
-            <div className="p-6 rounded-2xl bg-neutral-50 border border-neutral-200/80 space-y-3">
+            <div className="p-6 rounded-2xl bg-white shadow-sm space-y-3">
               <div className="flex items-center gap-2 text-neutral-900 font-bold text-base">
                 <MapPin className="w-5 h-5 text-primary-500" />
                 Dapur & Pusat Pengiriman
@@ -88,14 +88,14 @@ export default function KontakPage() {
               <p className="text-sm text-neutral-700 leading-relaxed">
                 {siteConfig.address}
               </p>
-              <div className="flex items-center gap-2 text-xs text-neutral-500 pt-1 border-t border-neutral-200">
+              <div className="flex items-center gap-2 text-xs text-neutral-500 pt-1 border-t border-neutral-100">
                 <Mail className="w-4 h-4 text-neutral-400" />
                 <span>Email: {siteConfig.email}</span>
               </div>
             </div>
 
             {/* Service Areas Card */}
-            <div className="p-6 rounded-2xl bg-frost-50 border border-frost-500/20 space-y-3">
+            <div className="p-6 rounded-2xl bg-frost-50 shadow-sm space-y-3">
               <div className="flex items-center gap-2 text-neutral-900 font-bold text-base">
                 <Truck className="w-5 h-5 text-frost-500" />
                 Area Jangkauan Pengiriman Beku
@@ -104,7 +104,7 @@ export default function KontakPage() {
                 {siteConfig.serviceAreas.map((area, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 rounded-lg bg-white border border-frost-500/20 text-xs font-semibold text-neutral-800"
+                    className="px-3 py-1 rounded-lg bg-white shadow-xs text-xs font-semibold text-neutral-800"
                   >
                     📍 {area}
                   </span>

@@ -33,7 +33,7 @@ export function ProductCard({ product }: ProductCardProps) {
     : buildSingleProductOrderMessage(product, defaultVariant, 1);
 
   return (
-    <div className="group relative flex flex-col bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+    <div className="group relative flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
       {/* Clickable Image Area */}
       <Link
         href={`/produk/${product.slug}`}

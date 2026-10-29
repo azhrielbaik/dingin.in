@@ -33,9 +33,9 @@ export function ValueProps() {
           {props.map((p, idx) => (
             <div
               key={idx}
-              className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-frost-500/20 shadow-2xs hover:shadow-sm transition-shadow"
+              className="flex items-start gap-4 p-4 rounded-2xl bg-white shadow-sm hover:shadow transition-shadow"
             >
-              <div className="w-12 h-12 rounded-xl bg-frost-50 flex items-center justify-center shrink-0 border border-frost-500/20">
+              <div className="w-12 h-12 rounded-xl bg-frost-50 flex items-center justify-center shrink-0">
                 {p.icon}
               </div>
               <div className="space-y-1">

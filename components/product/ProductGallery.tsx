@@ -28,7 +28,7 @@ export function ProductGallery({
   return (
     <div className="flex flex-col gap-3">
       {/* Main Image Display */}
-      <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-neutral-100 border border-neutral-200 shadow-sm">
+      <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-neutral-100 shadow-sm">
         <Image
           src={activeImage}
           alt={`${productName} - foto ${selectedIndex + 1}`}

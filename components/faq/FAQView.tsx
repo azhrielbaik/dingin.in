@@ -56,7 +56,7 @@ export function FAQView({ items }: FAQViewProps) {
       </div>
 
       {/* Accordion Component */}
-      <div className="bg-white rounded-3xl border border-neutral-200 p-6 sm:p-8 shadow-sm">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm">
         <Accordion items={accordionItems} defaultOpenId="faq-all-0" />
       </div>
     </div>

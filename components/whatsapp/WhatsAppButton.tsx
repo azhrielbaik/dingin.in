@@ -43,15 +43,15 @@ export function WhatsAppButton({
   };
 
   const sizeClasses = {
-    sm: "h-9 px-3 text-xs sm:text-sm rounded-md gap-1.5",
-    md: "h-11 px-4 text-sm sm:text-base rounded-md gap-2",
-    lg: "h-13 px-6 text-base sm:text-lg rounded-lg gap-2.5 font-bold",
+    sm: "h-8.5 px-3 text-xs rounded-lg gap-1.5",
+    md: "h-10 px-4 text-xs sm:text-sm rounded-xl gap-2",
+    lg: "h-11 px-5 sm:px-6 text-sm sm:text-base rounded-xl gap-2 font-bold",
   };
 
   const iconSizes = {
-    sm: "w-4 h-4",
-    md: "w-5 h-5",
-    lg: "w-6 h-6",
+    sm: "w-3.5 h-3.5",
+    md: "w-4 h-4",
+    lg: "w-5 h-5",
   };
 
   // If item is sold out, secondary styling is used with "Tanya Ketersediaan"
