@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Variant } from "@/types";
-import { formatRupiah } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 interface VariantPickerProps {
@@ -34,7 +33,7 @@ export function VariantPicker({
               aria-checked={isSelected}
               onClick={() => onSelect(variant)}
               className={cn(
-                "flex flex-col items-start px-3.5 py-2 rounded-xl border text-left transition-all cursor-pointer",
+                "inline-flex items-center px-3.5 py-2 rounded-xl border text-left transition-all cursor-pointer",
                 isSelected
                   ? "bg-primary-50 border-primary-500 ring-1 ring-primary-500"
                   : "bg-white border-neutral-200 hover:border-neutral-300 text-neutral-700"
@@ -42,9 +41,6 @@ export function VariantPicker({
             >
               <span className={cn("text-xs sm:text-sm font-bold", isSelected ? "text-primary-700" : "text-neutral-900")}>
                 {variant.label}
-              </span>
-              <span className="text-[11px] text-neutral-500 font-medium">
-                {formatRupiah(variant.price)}
               </span>
             </button>
           );
