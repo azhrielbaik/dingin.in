@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Product } from "@/types";
 import { Container } from "@/components/ui/Container";
 import { ProductCard } from "@/components/product/ProductCard";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight, Flame } from "lucide-react";
 
@@ -40,8 +41,14 @@ export function FeaturedProducts({ products }: FeaturedProductsProps) {
 
         {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-6 mb-8">
-          {products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
+          {products.map((product, idx) => (
+            <RevealOnScroll
+              key={product.slug}
+              delayMs={idx * 90}
+              className="h-full"
+            >
+              <ProductCard product={product} />
+            </RevealOnScroll>
           ))}
         </div>
 

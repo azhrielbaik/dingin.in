@@ -33,7 +33,7 @@ export function ProductCard({ product }: ProductCardProps) {
     : buildSingleProductOrderMessage(product, defaultVariant, 1);
 
   return (
-    <div className="group relative flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+    <div className="group relative flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1.5 border border-neutral-100/80 hover:border-primary-200/60 transition-all duration-300 h-full">
       {/* Clickable Image Area */}
       <Link
         href={`/produk/${product.slug}`}
@@ -44,7 +44,7 @@ export function ProductCard({ product }: ProductCardProps) {
           alt={product.name}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
         />
 
         {/* Badges on Top */}

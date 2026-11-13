@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/components/cart/CartProvider";
 import { Toast } from "@/components/cart/Toast";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { OrderStepperModal } from "@/components/cart/OrderStepperModal";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
@@ -78,6 +79,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <CartDrawer />
+          <OrderStepperModal />
           <FloatingWhatsApp />
         </CartProvider>
       </body>

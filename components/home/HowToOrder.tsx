@@ -1,30 +1,36 @@
 import React from "react";
 import { Container } from "@/components/ui/Container";
-import { ShoppingBag, MessageSquareShare, Calculator, Truck } from "lucide-react";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import {
+  ShoppingBag3DIcon,
+  WhatsApp3DIcon,
+  Calculator3DIcon,
+  DeliveryTruck3DIcon,
+} from "@/components/icons/3d/Trust3DIcons";
 
 export function HowToOrder() {
   const steps = [
     {
       step: 1,
-      icon: <ShoppingBag className="w-5 h-5 text-white" />,
+      icon: <ShoppingBag3DIcon className="w-9 h-9 drop-shadow-xs" />,
       title: "Pilih Produk",
       desc: "Telusuri katalog makanan beku kami, pilih varian berat dan jumlah yang diinginkan.",
     },
     {
       step: 2,
-      icon: <MessageSquareShare className="w-5 h-5 text-white" />,
+      icon: <WhatsApp3DIcon className="w-9 h-9 drop-shadow-xs" />,
       title: "Klik Pesan via WA",
       desc: "Tekan tombol WhatsApp. Pesanan otomatis terisi rapi di kolom chat Anda.",
     },
     {
       step: 3,
-      icon: <Calculator className="w-5 h-5 text-white" />,
+      icon: <Calculator3DIcon className="w-9 h-9 drop-shadow-xs" />,
       title: "Konfirmasi & Ongkir",
       desc: "Admin kami menghitung ongkir tercepat dan memberikan rincian total serta QRIS/rekening.",
     },
     {
       step: 4,
-      icon: <Truck className="w-5 h-5 text-white" />,
+      icon: <DeliveryTruck3DIcon className="w-9 h-9 drop-shadow-xs" />,
       title: "Kirim Tetap Beku",
       desc: "Setelah konfirmasi transfer, paket dikemas insulasi gel pack dan meluncur ke rumah Anda.",
     },
@@ -49,35 +55,37 @@ export function HowToOrder() {
         <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Connector Line on Desktop */}
           <div
-            className="hidden lg:block absolute top-7 left-12 right-12 h-0.5 bg-neutral-200 z-0"
+            className="hidden lg:block absolute top-8 left-12 right-12 h-0.5 bg-neutral-200 z-0"
             aria-hidden="true"
           />
 
-          {steps.map((item) => (
-            <div
+          {steps.map((item, idx) => (
+            <RevealOnScroll
               key={item.step}
-              className="relative z-10 flex flex-col items-center text-center p-4 rounded-2xl bg-white shadow-sm hover:shadow transition-shadow"
+              delayMs={idx * 120}
+              className="relative z-10 h-full"
             >
-              {/* Numbered badge circle */}
-              <div className="w-14 h-14 rounded-full bg-primary-500 text-white flex items-center justify-center font-extrabold text-lg shadow-md ring-4 ring-white mb-4">
-                {item.icon}
-              </div>
+              <div className="group flex flex-col items-center text-center p-5 rounded-2xl bg-white shadow-sm hover:shadow-md hover:-translate-y-1.5 border border-neutral-100/60 hover:border-primary-100 transition-all duration-300 h-full">
+                {/* 3D Glossy Icon Tile */}
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-b from-white to-neutral-50/90 border border-neutral-200/80 shadow-md ring-4 ring-white mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                  {item.icon}
+                </div>
 
-              <div className="inline-block px-2.5 py-0.5 rounded-full bg-primary-50 text-primary-700 text-xs font-bold mb-2">
-                Langkah {item.step}
-              </div>
+                <div className="inline-block px-2.5 py-0.5 rounded-full bg-primary-50 text-primary-700 text-xs font-bold mb-2">
+                  Langkah {item.step}
+                </div>
 
-              <h3 className="font-bold text-base text-neutral-900 mb-1.5">
-                {item.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
+                <h3 className="font-bold text-base text-neutral-900 mb-1.5 group-hover:text-primary-600 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            </RevealOnScroll>
           ))}
         </div>
       </Container>
     </section>
   );
 }
-

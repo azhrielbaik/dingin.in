@@ -21,6 +21,10 @@ interface CartContextType {
   isDrawerOpen: boolean;
   openDrawer: () => void;
   closeDrawer: () => void;
+  isCheckoutOpen: boolean;
+  checkoutItems: CartItem[];
+  openCheckout: (customItems?: CartItem[]) => void;
+  closeCheckout: () => void;
   toastMessage: string | null;
   hideToast: () => void;
 }
@@ -55,6 +59,8 @@ function getServerSnapshot(): string {
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [customCheckoutItems, setCustomCheckoutItems] = useState<CartItem[] | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Synchronize state with localStorage via useSyncExternalStore (React 18 & 19 recommended pattern)
@@ -139,6 +145,39 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     [items]
   );
 
+  const openCheckout = useCallback(
+    (customItems?: CartItem[]) => {
+      if (customItems && customItems.length > 0) {
+        setCustomCheckoutItems(customItems);
+        setIsDrawerOpen(false);
+        setIsCheckoutOpen(true);
+        return;
+      }
+
+      if (items.length === 0) {
+        showToast("Keranjang Anda masih kosong. Pilih produk terlebih dahulu.");
+        return;
+      }
+
+      setCustomCheckoutItems(null);
+      setIsDrawerOpen(false);
+      setIsCheckoutOpen(true);
+    },
+    [items, showToast]
+  );
+
+  const closeCheckout = useCallback(() => {
+    setIsCheckoutOpen(false);
+    setCustomCheckoutItems(null);
+  }, []);
+
+  const activeCheckoutItems = useMemo(() => {
+    if (customCheckoutItems && customCheckoutItems.length > 0) {
+      return customCheckoutItems;
+    }
+    return items;
+  }, [customCheckoutItems, items]);
+
   return (
     <CartContext.Provider
       value={{
@@ -152,6 +191,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         isDrawerOpen,
         openDrawer: () => setIsDrawerOpen(true),
         closeDrawer: () => setIsDrawerOpen(false),
+        isCheckoutOpen,
+        checkoutItems: activeCheckoutItems,
+        openCheckout,
+        closeCheckout,
         toastMessage,
         hideToast: () => setToastMessage(null),
       }}

@@ -10,7 +10,8 @@ import { ProductInfoTabs } from "./ProductInfoTabs";
 import { StickyMobileBar } from "./StickyMobileBar";
 import { formatRupiah } from "@/lib/format";
 import { WhatsAppButton } from "@/components/whatsapp/WhatsAppButton";
-import { buildSingleProductOrderMessage, buildProductInquiryMessage } from "@/lib/whatsapp";
+import { WhatsAppIcon } from "@/components/whatsapp/WhatsAppIcon";
+import { buildProductInquiryMessage } from "@/lib/whatsapp";
 import { useCart } from "@/components/cart/CartProvider";
 import { Info, ShoppingBag, ShieldCheck, Truck, ChevronRight } from "lucide-react";
 
@@ -21,17 +22,31 @@ interface ProductDetailViewProps {
 export function ProductDetailView({ product }: ProductDetailViewProps) {
   const [selectedVariant, setSelectedVariant] = useState<Variant>(product.variants[0]);
   const [quantity, setQuantity] = useState<number>(1);
-  const { addItem } = useCart();
+  const { addItem, openCheckout } = useCart();
 
   const isSoldout = product.status === "soldout";
   const unitPrice = selectedVariant.price;
   const totalPrice = unitPrice * quantity;
   const comparePrice = selectedVariant.comparePrice;
 
-  // Build WhatsApp order message
-  const orderMessage = isSoldout
-    ? buildProductInquiryMessage(product.name)
-    : buildSingleProductOrderMessage(product, selectedVariant, quantity);
+  // Build WhatsApp inquiry message for soldout
+  const inquiryMessage = buildProductInquiryMessage(product.name);
+
+  const handleDirectOrder = () => {
+    if (isSoldout) return;
+    openCheckout([
+      {
+        productSlug: product.slug,
+        productName: product.name,
+        variantId: selectedVariant.id,
+        variantLabel: selectedVariant.label,
+        price: selectedVariant.price,
+        comparePrice: selectedVariant.comparePrice,
+        image: product.images[0],
+        quantity,
+      },
+    ]);
+  };
 
   const handleAddToCart = () => {
     if (isSoldout) return;
@@ -164,18 +179,29 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
             {/* Action Buttons: WhatsApp Order (wa-700) and Add to Cart */}
             <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
               <div className="w-full flex-1">
-                <WhatsAppButton
-                  message={orderMessage}
-                  source="product_detail_page"
-                  productName={product.name}
-                  variantLabel={selectedVariant.label}
-                  value={totalPrice}
-                  isSoldout={isSoldout}
-                  size="lg"
-                  fullWidth
-                >
-                  {isSoldout ? "Tanya Ketersediaan via WA" : "Pesan via WhatsApp"}
-                </WhatsAppButton>
+                {isSoldout ? (
+                  <WhatsAppButton
+                    message={inquiryMessage}
+                    source="product_detail_page"
+                    productName={product.name}
+                    variantLabel={selectedVariant.label}
+                    value={totalPrice}
+                    isSoldout={isSoldout}
+                    size="lg"
+                    fullWidth
+                  >
+                    Tanya Ketersediaan via WA
+                  </WhatsAppButton>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleDirectOrder}
+                    className="w-full h-11 px-6 rounded-xl bg-wa-700 hover:bg-wa-800 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-sm hover:shadow active:scale-98 transition-all cursor-pointer"
+                  >
+                    <WhatsAppIcon className="w-5 h-5 text-white" />
+                    <span>Pesan via WhatsApp</span>
+                  </button>
+                )}
               </div>
 
               {!isSoldout && (
@@ -224,6 +250,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
         selectedVariant={selectedVariant}
         quantity={quantity}
         onAddToCart={handleAddToCart}
+        onDirectOrder={handleDirectOrder}
       />
     </>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Hero } from "@/components/home/Hero";
+import { PartnerMarquee } from "@/components/home/PartnerMarquee";
 import { CategoryNav } from "@/components/home/CategoryNav";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { ValueProps } from "@/components/home/ValueProps";
@@ -55,6 +56,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
+      <PartnerMarquee />
       <CategoryNav />
       <FeaturedProducts products={featuredProducts} />
       <ValueProps />

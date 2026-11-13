@@ -88,3 +88,26 @@ export type Testimonial = {
   favoriteProduct?: string;
 };
 
+export type FulfillmentMethod = "delivery" | "pickup";
+
+export type OrderFormData = {
+  // Step 1: Data Kontak
+  name: string;
+  phone: string;
+  email: string;
+  // Step 2: Pengantaran / Pick-up
+  fulfillmentMethod: FulfillmentMethod;
+  // Jika diantar:
+  area: string;
+  address: string;
+  notesCourier?: string;
+  preferredTime: string;
+  // Jika pick-up:
+  pickupLocation: string;
+  pickupTime: string;
+  pickupPerson?: string;
+  // Step 3: Catatan pesanan
+  orderNotes?: string;
+};
+
+

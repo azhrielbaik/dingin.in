@@ -1,4 +1,4 @@
-import { Product, Variant, CartItem } from "@/types";
+import { Product, Variant, CartItem, OrderFormData } from "@/types";
 import { siteConfig } from "@/data/site-config";
 import { formatRupiah } from "./format";
 
@@ -92,4 +92,79 @@ export function buildGeneralInquiryMessage(): string {
 export function buildProductInquiryMessage(productName: string): string {
   return `Halo ${siteConfig.brandName}, saya tertarik dengan produk "${productName}" yang sedang habis di website. Kapan kira-kira stoknya tersedia kembali?`;
 }
+
+/**
+ * Builds automated WhatsApp message with filled customer data & fulfillment details
+ */
+export function buildStructuredOrderMessage(params: {
+  items: CartItem[];
+  formData: OrderFormData;
+  brandName?: string;
+}): string {
+  const brand = params.brandName || siteConfig.brandName;
+  const subtotal = params.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+  const itemLines = params.items.map(
+    (item, index) =>
+      `${index + 1}. ${item.productName} (${item.variantLabel}) × ${item.quantity} = ${formatRupiah(
+        item.price * item.quantity
+      )}`
+  );
+
+  const isDelivery = params.formData.fulfillmentMethod === "delivery";
+
+  const lines: string[] = [
+    `Halo ${brand}, saya mau melakukan pemesanan:`,
+    "",
+    "📦 *[DAFTAR PESANAN]*",
+    ...itemLines,
+    "",
+    `💰 *Estimasi Subtotal:* ${formatRupiah(subtotal)} ${isDelivery ? "(belum termasuk ongkir)" : "(ambil sendiri)"}`,
+    "",
+    "👤 *[DATA PEMESAN]*",
+    `• Nama: ${params.formData.name}`,
+    `• No. WhatsApp: ${params.formData.phone}`,
+  ];
+
+  if (params.formData.email) {
+    lines.push(`• Email: ${params.formData.email}`);
+  }
+
+  lines.push("");
+
+  if (isDelivery) {
+    lines.push(
+      "🚚 *[METODE PENGIRIMAN - DIANTARKAN]*",
+      `• Area: ${params.formData.area}`,
+      `• Alamat Lengkap: ${params.formData.address}`
+    );
+    if (params.formData.notesCourier) {
+      lines.push(`• Patokan / Catatan Kurir: ${params.formData.notesCourier}`);
+    }
+    if (params.formData.preferredTime) {
+      lines.push(`• Waktu Pengiriman: ${params.formData.preferredTime}`);
+    }
+  } else {
+    lines.push(
+      "🏬 *[METODE PENGIRIMAN - AMBIL SENDIRI (PICK-UP)]*",
+      `• Lokasi Gerai: ${params.formData.pickupLocation || siteConfig.address}`,
+      `• Jadwal Pengambilan: ${params.formData.pickupTime}`
+    );
+    if (params.formData.pickupPerson) {
+      lines.push(`• Diambil Oleh: ${params.formData.pickupPerson}`);
+    }
+  }
+
+  if (params.formData.orderNotes) {
+    lines.push("", "📝 *[CATATAN PESANAN]*", params.formData.orderNotes);
+  }
+
+  lines.push(
+    "",
+    "Mohon info ketersediaan stok & rincian pembayarannya ya min. Terima kasih!"
+  );
+
+  return lines.join("\n");
+}
+
 

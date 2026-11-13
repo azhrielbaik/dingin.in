@@ -6,7 +6,12 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppButton } from "@/components/whatsapp/WhatsAppButton";
 import { buildGeneralInquiryMessage } from "@/lib/whatsapp";
-import { Snowflake, ShieldCheck, Zap, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import {
+  IceCrystal3DIcon,
+  HalalShield3DIcon,
+  SpeedDelivery3DIcon,
+} from "@/components/icons/3d/Trust3DIcons";
 
 const heroImages = [
   "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?q=80&w=1600&auto=format&fit=crop",
@@ -29,7 +34,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden -mt-[68px] sm:-mt-[80px] pt-24 pb-32 sm:pt-32 sm:pb-40 lg:pt-36 lg:pb-48">
       {/* Background Slideshow of Food Images */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {heroImages.map((src, index) => (
@@ -45,20 +50,20 @@ export function Hero() {
           />
         ))}
 
-        {/* Gradient & Frosted Overlay to maintain text contrast while keeping food images bright */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/45 to-transparent" />
+        {/* Subtle Dark Gradient Overlay: keeps food appetizing & vibrant on right, makes text razor sharp on left */}
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/85 via-neutral-900/60 to-neutral-900/20 sm:from-neutral-950/80 sm:via-neutral-900/40 sm:to-transparent" />
       </div>
 
       <Container className="relative z-10">
         <div className="max-w-2xl lg:max-w-3xl space-y-6 text-center lg:text-left">
           {/* Display / Hero Title */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-[1.15]">
-            Stok Makanan Beku Berkualitas,{" "}
-            <span className="text-primary-500">Tinggal Masak.</span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.15] text-white">
+            <span className="text-yellow-400">Stok Makanan Beku Berkualitas,</span>{" "}
+            <span className="text-white">Tinggal Masak.</span>
           </h1>
 
           {/* Subtext */}
-          <p className="text-base sm:text-lg text-neutral-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          <p className="text-base sm:text-lg text-neutral-200 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
             Dumpling ayam, nugget keju, sosis bratwurst, dan bakso sapi urat pilihan. Higienis, 100% Halal, dikemas dengan rantai dingin terjamin dan dipesan mudah langsung via WhatsApp.
           </p>
 
@@ -87,34 +92,34 @@ export function Hero() {
           </div>
 
           {/* Trust Highlights */}
-          <div className="pt-4 grid grid-cols-3 gap-3 border-t border-neutral-200/80 text-left max-w-lg mx-auto lg:mx-0">
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-frost-50 flex items-center justify-center text-frost-500 shrink-0">
-                <Snowflake className="w-4 h-4" />
+          <div className="pt-4 grid grid-cols-3 gap-3 border-t border-white/20 text-left max-w-lg mx-auto lg:mx-0">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-xs flex items-center justify-center shrink-0 border border-white/20 shadow-xs">
+                <IceCrystal3DIcon className="w-5 h-5 drop-shadow-xs" />
               </div>
               <div className="text-[11px] sm:text-xs">
-                <span className="font-bold text-neutral-900 block leading-tight">Tetap Beku</span>
-                <span className="text-neutral-500">Insulasi + Gel Pack</span>
+                <span className="font-bold text-white block leading-tight">Tetap Beku</span>
+                <span className="text-neutral-300">Insulasi + Gel Pack</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-success/10 flex items-center justify-center text-success shrink-0">
-                <ShieldCheck className="w-4 h-4" />
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-xs flex items-center justify-center shrink-0 border border-white/20 shadow-xs">
+                <HalalShield3DIcon className="w-5 h-5 drop-shadow-xs" />
               </div>
               <div className="text-[11px] sm:text-xs">
-                <span className="font-bold text-neutral-900 block leading-tight">100% Halal</span>
-                <span className="text-neutral-500">Resmi LPPOM MUI</span>
+                <span className="font-bold text-white block leading-tight">100% Halal</span>
+                <span className="text-neutral-300">Resmi LPPOM MUI</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-accent-100 flex items-center justify-center text-accent-500 shrink-0">
-                <Zap className="w-4 h-4" />
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-xs flex items-center justify-center shrink-0 border border-white/20 shadow-xs">
+                <SpeedDelivery3DIcon className="w-5 h-5 drop-shadow-xs" />
               </div>
               <div className="text-[11px] sm:text-xs">
-                <span className="font-bold text-neutral-900 block leading-tight">Kirim Sameday</span>
-                <span className="text-neutral-500">Tiba di Hari Sama</span>
+                <span className="font-bold text-white block leading-tight">Kirim Sameday</span>
+                <span className="text-neutral-300">Tiba di Hari Sama</span>
               </div>
             </div>
           </div>

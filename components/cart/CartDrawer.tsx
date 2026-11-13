@@ -6,12 +6,11 @@ import { X, ShoppingBag, Info, Trash2 } from "lucide-react";
 import { useCart } from "./CartProvider";
 import { CartItemRow } from "./CartItemRow";
 import { formatRupiah } from "@/lib/format";
-import { buildCartOrderMessage } from "@/lib/whatsapp";
-import { WhatsAppButton } from "@/components/whatsapp/WhatsAppButton";
+import { WhatsAppIcon } from "@/components/whatsapp/WhatsAppIcon";
 import { Button } from "@/components/ui/Button";
 
 export function CartDrawer() {
-  const { items, isDrawerOpen, closeDrawer, subtotal, totalItems, clearCart } = useCart();
+  const { items, isDrawerOpen, closeDrawer, subtotal, totalItems, clearCart, openCheckout } = useCart();
 
   // Prevent background scroll when drawer is open
   useEffect(() => {
@@ -26,8 +25,6 @@ export function CartDrawer() {
   }, [isDrawerOpen]);
 
   if (!isDrawerOpen) return null;
-
-  const orderMessage = buildCartOrderMessage(items);
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
@@ -110,14 +107,14 @@ export function CartDrawer() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <WhatsAppButton
-                  message={orderMessage}
-                  source="cart_drawer"
-                  size="lg"
-                  fullWidth
+                <button
+                  type="button"
+                  onClick={() => openCheckout()}
+                  className="w-full py-3 px-4 rounded-xl bg-wa-700 hover:bg-wa-800 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all cursor-pointer"
                 >
-                  Kirim Pesanan ke WhatsApp
-                </WhatsAppButton>
+                  <WhatsAppIcon className="w-5 h-5 text-white" />
+                  <span>Isi Data & Pesan via WA</span>
+                </button>
 
                 <div className="flex items-center justify-between pt-1">
                   <button

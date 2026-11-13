@@ -4,7 +4,8 @@ import React from "react";
 import { Product, Variant } from "@/types";
 import { formatRupiah } from "@/lib/format";
 import { WhatsAppButton } from "@/components/whatsapp/WhatsAppButton";
-import { buildSingleProductOrderMessage, buildProductInquiryMessage } from "@/lib/whatsapp";
+import { WhatsAppIcon } from "@/components/whatsapp/WhatsAppIcon";
+import { buildProductInquiryMessage } from "@/lib/whatsapp";
 import { ShoppingBag } from "lucide-react";
 
 interface StickyMobileBarProps {
@@ -12,6 +13,7 @@ interface StickyMobileBarProps {
   selectedVariant: Variant;
   quantity: number;
   onAddToCart: () => void;
+  onDirectOrder?: () => void;
 }
 
 export function StickyMobileBar({
@@ -19,13 +21,12 @@ export function StickyMobileBar({
   selectedVariant,
   quantity,
   onAddToCart,
+  onDirectOrder,
 }: StickyMobileBarProps) {
   const isSoldout = product.status === "soldout";
   const totalPrice = selectedVariant.price * quantity;
 
-  const orderMessage = isSoldout
-    ? buildProductInquiryMessage(product.name)
-    : buildSingleProductOrderMessage(product, selectedVariant, quantity);
+  const orderMessage = buildProductInquiryMessage(product.name);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-neutral-200 p-3 sm:hidden shadow-lg safe-bottom">
@@ -47,25 +48,36 @@ export function StickyMobileBar({
               type="button"
               onClick={onAddToCart}
               aria-label="Tambah ke keranjang"
-              className="h-11 w-11 rounded-xl border border-primary-500 text-primary-500 hover:bg-primary-50 flex items-center justify-center shrink-0 transition-colors"
+              className="h-11 w-11 rounded-xl border border-primary-500 text-primary-500 hover:bg-primary-50 flex items-center justify-center shrink-0 transition-colors cursor-pointer"
             >
               <ShoppingBag className="w-5 h-5" />
             </button>
           )}
 
           <div className="flex-1 max-w-[210px]">
-            <WhatsAppButton
-              message={orderMessage}
-              source="sticky_mobile_bar"
-              productName={product.name}
-              variantLabel={selectedVariant.label}
-              value={totalPrice}
-              isSoldout={isSoldout}
-              size="md"
-              fullWidth
-            >
-              {isSoldout ? "Tanya Stok" : "Pesan WA"}
-            </WhatsAppButton>
+            {isSoldout ? (
+              <WhatsAppButton
+                message={orderMessage}
+                source="sticky_mobile_bar"
+                productName={product.name}
+                variantLabel={selectedVariant.label}
+                value={totalPrice}
+                isSoldout={isSoldout}
+                size="md"
+                fullWidth
+              >
+                Tanya Stok
+              </WhatsAppButton>
+            ) : (
+              <button
+                type="button"
+                onClick={onDirectOrder}
+                className="w-full h-11 px-3 rounded-xl bg-wa-700 hover:bg-wa-800 text-white font-bold text-sm flex items-center justify-center gap-1.5 shadow-sm active:scale-98 transition-all cursor-pointer"
+              >
+                <WhatsAppIcon className="w-4 h-4 text-white" />
+                <span>Pesan WA</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

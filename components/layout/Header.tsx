@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useSyncExternalStore } from "react";
+import React, { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,8 +18,46 @@ function subscribe() {
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const mounted = useSyncExternalStore(subscribe, () => true, () => false);
   const pathname = usePathname();
+
+  // Handle dynamic navbar visibility on scroll (autohide when scrolling down, show when scrolling up)
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show navbar near the top of the page
+      if (currentScrollY < 80) {
+        setIsVisible(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      // Keep navbar visible if mobile drawer is open
+      if (mobileMenuOpen) {
+        setIsVisible(true);
+        return;
+      }
+
+      const diff = currentScrollY - lastScrollY.current;
+      // Use 8px threshold to avoid micro-jitter
+      if (Math.abs(diff) > 8) {
+        if (diff > 0) {
+          // Scrolling down -> hide navbar
+          setIsVisible(false);
+        } else {
+          // Scrolling up -> reveal navbar
+          setIsVisible(true);
+        }
+        lastScrollY.current = currentScrollY;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [mobileMenuOpen]);
 
   // Lock body scroll when mobile menu is open to prevent background scrolling
   useEffect(() => {
@@ -48,17 +86,22 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200">
-        {/* Main Navbar */}
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <header
+        className={cn(
+          "sticky top-0 z-40 w-full px-3 sm:px-6 pt-3 sm:pt-4 transition-transform duration-300 ease-in-out pointer-events-none",
+          isVisible ? "translate-y-0" : "-translate-y-full"
+        )}
+      >
+        {/* Main Floating Capsule Navbar */}
+        <div className="max-w-[1200px] mx-auto pointer-events-auto bg-white/95 backdrop-blur-md border border-neutral-200/90 shadow-md shadow-neutral-900/5 rounded-full px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3 sm:gap-4">
           {/* Mobile menu button */}
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Buka menu navigasi"
-              className="p-2 -ml-2 text-neutral-700 hover:text-primary-600 rounded-lg hover:bg-neutral-100 cursor-pointer"
+              className="p-2 -ml-1 text-neutral-700 hover:text-primary-600 rounded-full hover:bg-neutral-100 cursor-pointer"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
 
@@ -68,7 +111,7 @@ export function Header() {
             className="flex items-center gap-2 group select-none"
             aria-label="dingin.in Beranda"
           >
-            <div className="w-9 h-9 rounded-xl bg-primary-500 text-white flex items-center justify-center shadow-sm group-hover:bg-primary-600 transition-colors">
+            <div className="w-9 h-9 rounded-full bg-primary-500 text-white flex items-center justify-center shadow-xs group-hover:bg-primary-600 transition-colors">
               <Snowflake className="w-5 h-5 text-accent-400" />
             </div>
             <div className="flex flex-col">
@@ -90,10 +133,10 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "px-3.5 py-2 text-sm font-semibold rounded-lg transition-colors",
+                    "px-4 py-1.5 text-sm font-semibold rounded-full transition-colors",
                     isActive
                       ? "text-primary-600 bg-primary-50"
-                      : "text-neutral-700 hover:text-primary-600 hover:bg-neutral-50"
+                      : "text-neutral-700 hover:text-primary-600 hover:bg-neutral-100/80"
                   )}
                 >
                   {link.label}
@@ -112,7 +155,7 @@ export function Header() {
               rel="noopener noreferrer"
               onClick={handleChatClick}
               aria-label="Hubungi kami via WhatsApp (membuka WhatsApp di tab baru)"
-              className="inline-flex items-center gap-2 bg-wa-700 hover:bg-wa-800 text-white text-xs sm:text-sm font-bold px-3.5 sm:px-4 py-2 rounded-xl transition-all shadow-sm active:scale-95"
+              className="inline-flex items-center gap-2 bg-wa-700 hover:bg-wa-800 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-full transition-all shadow-xs active:scale-95"
             >
               <WhatsAppIcon className="w-4 h-4 text-white" />
               <span>Chat WA</span>

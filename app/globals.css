@@ -2,7 +2,7 @@
 
 @theme {
   /* Primary */
-  --color-primary-50:  #eaf3ff;
+  --color-primary-50: #eaf3ff;
   --color-primary-100: #d4e7ff;
   --color-primary-500: #0064d2;
   --color-primary-600: #0052ad;
@@ -14,7 +14,7 @@
   --color-accent-500: #ffb800;
 
   /* Frost (penanda beku) */
-  --color-frost-50:  #e6f4fa;
+  --color-frost-50: #e6f4fa;
   --color-frost-500: #4fb3d9;
 
   /* WhatsApp */
@@ -24,8 +24,8 @@
   --color-wa-800: #0b6350;
 
   /* Netral (menimpa/melengkapi neutral) */
-  --color-neutral-0:   #ffffff;
-  --color-neutral-50:  #f5f6f8;
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f5f6f8;
   --color-neutral-100: #eceef2;
   --color-neutral-200: #dde1e8;
   --color-neutral-400: #9aa3b2;
@@ -36,8 +36,8 @@
   /* Semantik */
   --color-success: #1a9e5c;
   --color-warning: #f59e0b;
-  --color-danger:  #e5484d;
-  --color-promo:   #ff5a36;
+  --color-danger: #e5484d;
+  --color-promo: #ff5a36;
 
   /* Radius */
   --radius-sm: 8px;
@@ -84,13 +84,43 @@ body {
   width: 8px;
   height: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #f5f6f8;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #dde1e8;
   border-radius: 9999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #9aa3b2;
+}
+
+/* Infinite Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+    overflow-x: auto;
+  }
 }

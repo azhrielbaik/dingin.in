@@ -5,10 +5,9 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { useCart } from "@/components/cart/CartProvider";
 import { CartItemRow } from "@/components/cart/CartItemRow";
-import { WhatsAppButton } from "@/components/whatsapp/WhatsAppButton";
+import { WhatsAppIcon } from "@/components/whatsapp/WhatsAppIcon";
 import { Button } from "@/components/ui/Button";
 import { formatRupiah } from "@/lib/format";
-import { buildCartOrderMessage } from "@/lib/whatsapp";
 import {
   ShoppingBag,
   Trash2,
@@ -20,9 +19,7 @@ import {
 } from "lucide-react";
 
 export default function KeranjangPage() {
-  const { items, subtotal, totalItems, clearCart } = useCart();
-
-  const orderMessage = buildCartOrderMessage(items);
+  const { items, subtotal, totalItems, clearCart, openCheckout } = useCart();
 
   return (
     <div className="py-8 sm:py-12 bg-neutral-50/50 min-h-[75vh]">
@@ -151,18 +148,18 @@ export default function KeranjangPage() {
                 </p>
               </div>
 
-              {/* Direct WhatsApp CTA Button */}
+              {/* Direct WhatsApp CTA Button with Stepper Form */}
               <div className="space-y-2 pt-1">
-                <WhatsAppButton
-                  message={orderMessage}
-                  source="cart_page"
-                  size="lg"
-                  fullWidth
+                <button
+                  type="button"
+                  onClick={() => openCheckout()}
+                  className="w-full py-3.5 px-5 rounded-xl bg-wa-700 hover:bg-wa-800 text-white font-bold text-base flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-98 transition-all cursor-pointer"
                 >
-                  Kirim Pesanan ke WhatsApp
-                </WhatsAppButton>
+                  <WhatsAppIcon className="w-5 h-5 text-white" />
+                  <span>Isi Data & Pesan via WhatsApp</span>
+                </button>
                 <p className="text-[11px] text-neutral-400 text-center">
-                  Chat WhatsApp akan terbuka dengan format daftar pesanan terisi otomatis.
+                  Formulir data pemesan & alamat pengantaran/pick-up akan muncul sebelum terhubung ke WhatsApp.
                 </p>
               </div>
 
